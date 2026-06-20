@@ -530,9 +530,11 @@ def generate_html_email(debuts_with_data):
         else:
             position_badges = f'<span class="badge badge-position">{player["position"]}</span>'
 
+        debut_badge = f'<span class="badge badge-debut">{player["debut_date"].strftime("%b %d")}</span>'
+
         player_sections.append(f"""
             <div class="callup-alert">
-                <h3>{i}. {player['name']} {position_badges} {bsl_badge}</h3>
+                <h3>{i}. {player['name']} {position_badges} {debut_badge} {bsl_badge}</h3>
                 <p><strong>Team:</strong> {player['team']} | <strong>Age:</strong> {player['age']} | <strong>Debut:</strong> {player['debut_date'].strftime('%B %d, %Y')}</p>
                 <p><strong>Debut Performance:</strong> {player.get('debut_stats', 'N/A')}</p>
 
@@ -628,6 +630,7 @@ def generate_html_email(debuts_with_data):
         .badge-available {{ background: #007bff; color: white; }}
         .badge-owned {{ background: #dc3545; color: white; }}
         .badge-unknown {{ background: #6c757d; color: white; }}
+        .badge-debut {{ background: #17a2b8; color: white; }}
         .footer {{
             margin-top: 30px;
             padding-top: 20px;
