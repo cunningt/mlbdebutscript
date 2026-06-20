@@ -418,9 +418,11 @@ def format_pitching_stats_table(stats):
 
 def summarize_with_llm(player_info, bref_stats, prospect_results):
     """Use local Qwen model to summarize prospect info."""
+    import httpx
     client = OpenAI(
         base_url="http://127.0.0.1:8000/v1",
-        api_key="not-needed"
+        api_key="not-needed",
+        http_client=httpx.Client(verify=False)
     )
 
     prospect_text = "\n".join([
